@@ -6,7 +6,7 @@
 - 整体步骤如下：
   - 业务方手动或自动触发发送短信验证码, 然后调用SmsCodeWebook的/api/getCode, 等待返回验证码；
   - 移动端(android等) 使用工具(如SmsForwarder) 监听手机短信
-  - 当接收到验证码时, 调用SmsCodeWebook的/api/sendSmsMsg接口发送短信内容；
+  - 当工具监听到验证码短信时, 调用SmsCodeWebook的/api/sendSmsMsg接口发送短信内容；
   - SmsCodeWebook接受到短信内容后, 将验证码从短信中匹配出来, 存到redis中；
   - SmsCodeWebook从redis取出key, 返回验证码给业务方。
 
