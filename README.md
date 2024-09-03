@@ -79,5 +79,5 @@ CACHES = {
 
 ## 运行服务
 ```commandline
-python.exe manage.py runserver
+python manage.py runserver
 ```
