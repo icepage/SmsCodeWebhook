@@ -10,6 +10,8 @@
   - SmsCodeWebook接受到短信内容后, 将验证码从短信中匹配出来, 存到redis中；
   - SmsCodeWebook从redis取出key, 返回验证码给业务方。
 
+## TODO:
+- 根据手机查询验证码(目前调用时只是假传手机号)
 
 ## 接口说明
 ### 1. Send SMS Message
@@ -48,6 +50,46 @@
 
 
 ## 使用文档
+
+## 1、docker部署(推荐)
+
+### 下载镜像
+```shell
+docker pull icepage/scw:latest
+```
+
+### 运行
+
+使用默认setting.py
+```bash
+docker run -p 8000:8000 icepage/scw:latest
+```
+
+自定义setting.py
+```bash
+docker run -v /本地路径/setting.py:/app/SmsCodebhook/settings.py -p 8000:8000 icepage/scw:latest
+```
+
+### 测试
+开2个终端测试
+
+#### 终端1
+调用/api/getCode, 等待验证码
+```shell
+curl -X POST 'http://127.0.0.1:8000/api/getCode'  -d '{"phone_number": "13500000000"}'
+```
+
+#### 终端2
+调用/api/sendSmsMsg，发送验证消息
+```shell
+curl -X POST 'http://127.0.0.1:8000/api/sendSmsMsg' -d '{"sms_msg": "【京东】请确认本人操作，切勿泄露给他人。您正在新设备上登录，验证码：475431。京东工作人员不会索取此验证码。"}'
+```
+
+#### 重回终端1
+看到验证码返回
+
+
+## 2、本地部署
 ### 安装依赖
 ```commandline
 pip install -r requirements.txt
