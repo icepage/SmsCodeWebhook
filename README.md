@@ -10,44 +10,6 @@
   - SmsCodeWebook接受到短信内容后, 将验证码从短信中匹配出来, 存到redis中；
   - SmsCodeWebook从redis取出key, 返回验证码给业务方。
 
-## TODO:
-- 根据手机查询验证码(目前调用时只是假传手机号)
-
-## 接口说明
-### 1. Send SMS Message
-
-#### Endpoint
-`POST /api/sendSmsMsg`
-
-#### Description
-发送验证码短信原文
-
-#### Body
-```json
-{
-    "sms_msg": "请确认本人操作，切勿泄露给他人。您正在新设备上登录，验证码：475431。"
-}
-```
-
-##### Content-Type: `application/json`
-
-### 2. Get Code
-
-#### Endpoint
-`POST /api/getCode`
-
-#### Description
-获取验证码
-
-#### Body
-```json
-{
-    "phone_number": "13500000000"
-}
-```
-
-##### Content-Type: `application/json`
-
 
 ## 使用文档
 
@@ -123,3 +85,43 @@ CACHES = {
 ```commandline
 python manage.py runserver
 ```
+
+
+## TODO:
+- 根据手机查询验证码(目前调用时只是假传手机号)
+
+
+## 接口说明
+### 1. Send SMS Message
+
+#### Endpoint
+`POST /api/sendSmsMsg`
+
+#### Description
+发送验证码短信原文
+
+#### Body
+```json
+{
+    "sms_msg": "请确认本人操作，切勿泄露给他人。您正在新设备上登录，验证码：475431。"
+}
+```
+
+##### Content-Type: `application/json`
+
+### 2. Get Code
+
+#### Endpoint
+`POST /api/getCode`
+
+#### Description
+获取验证码
+
+#### Body
+```json
+{
+    "phone_number": "13500000000"
+}
+```
+
+##### Content-Type: `application/json`
