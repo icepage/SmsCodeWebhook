@@ -22,14 +22,14 @@ docker pull icepage/scw:latest
 
 ### 运行
 
-使用默认setting.py
+使用默认settings.py
 ```bash
 docker run -p 8000:8000 icepage/scw:latest
 ```
 
-自定义setting.py
+自定义settings.py
 ```bash
-docker run -v /本地路径/setting.py:/app/SmsCodebhook/settings.py -p 8000:8000 icepage/scw:latest
+docker run -v /本地路径/settings.py:/app/SmsCodebhook/settings.py -p 8000:8000 icepage/scw:latest
 ```
 
 ### 测试
